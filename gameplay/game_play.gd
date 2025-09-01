@@ -2,6 +2,7 @@ class_name Gameplay extends Node2D
 
 @onready var head: Head = %Head as Head
 @onready var bounds: Bounds = $Bounds as Bounds
+@onready var spawner: Spawner = $Spawner as Spawner
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
@@ -11,6 +12,7 @@ var move_dir : Vector2 = Vector2.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawner.spawn_foods()
 	pass # Replace with function body.
 
 
@@ -36,4 +38,6 @@ func update_snake():
 	new_pos = bounds.wrap_vector(new_pos)
 	head.move_to(new_pos)
 	pass
+	
+
 	

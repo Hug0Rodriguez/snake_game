@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://d0pupv1wgrw83"]
+[gd_scene load_steps=8 format=4 uid="uid://d0pupv1wgrw83"]
 
 [ext_resource type="Script" uid="uid://cmonmi7lyo3jg" path="res://gameplay/game_play.gd" id="1_3d6ol"]
 [ext_resource type="Texture2D" uid="uid://dk82fq47pk5wy" path="res://gameplay/sprites/grid.png" id="2_pwveg"]
 [ext_resource type="PackedScene" uid="uid://cxgk06u7wbby8" path="res://gameplay/head.tscn" id="2_uk1ao"]
 [ext_resource type="Script" uid="uid://bvdggc35hftv1" path="res://gameplay/bounds.gd" id="3_fj3gc"]
+[ext_resource type="Script" uid="uid://bbn1cbdn4vkki" path="res://gameplay/spawner.gd" id="5_ckaxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckaxb"]
 texture = ExtResource("2_pwveg")
@@ -23,7 +24,7 @@ tile_set = SubResource("TileSet_8tlxs")
 
 [node name="Head" parent="." instance=ExtResource("2_uk1ao")]
 unique_name_in_owner = true
-position = Vector2(303, 236)
+position = Vector2(289, 226)
 
 [node name="Bounds" type="Node2D" parent="."]
 script = ExtResource("3_fj3gc")
@@ -32,3 +33,7 @@ script = ExtResource("3_fj3gc")
 
 [node name="LowerRight" type="Marker2D" parent="Bounds"]
 position = Vector2(799, 446)
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("bounds")]
+script = ExtResource("5_ckaxb")
+bounds = NodePath("../Bounds")
